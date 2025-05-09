@@ -1020,7 +1020,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formPreviewDiv.appendChild(questionElement); // Append to the preview div
         });
     }
-
+/*
     async function saveAndPublishForm() {
         // Get the current authenticated user
         const user = firebase.auth().currentUser;
@@ -1030,7 +1030,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'login.html';
             return;
         }
-
+*/
         if (!databaseURL || databaseURL.includes("YOUR_DATABASE_URL") || databaseURL.length < 20) { // Basic check
             console.error("Firebase Realtime Database URL is not configured. Cannot save form.");
             if (publishStatusDiv) { // Check if element exists
