@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Form Builder - Results</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="result.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <script>
+    // --- Firebase Configuration ---
+    const firebaseConfig = {
+      apiKey: "AIzaSyD0j1reBX48XiPuxkQvKhfgelC-sFH8wKI",
+      authDomain: "formsmart-7a3e7.firebaseapp.com",
+      databaseURL: "https://formsmart-7a3e7-default-rtdb.firebaseio.com",
+      projectId: "formsmart-7a3e7",
+      storageBucket: "formsmart-7a3e7.firebasestorage.app",
+      messagingSenderId: "51184438401",
+      appId: "1:51184438401:web:8175270b3571b7d7925180",
+      measurementId: "G-28KJT44LN2"
+    };
+    // --- AI Analysis Webhook URL ---
+    const ANALYSIS_WEBHOOK_URL = "https://waqarwork125.app.n8n.cloud/webhook/e3340dee-4778-4585-8dd4-7c95e58e3a21";
+     // Ensure firebase is initialized before result.js runs
+     if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+     }
+  </script>
+</head>
+<body>
+  <header>
+      Smart Form Builder - Results
+       <div class="header-actions"> <a href="index.html" class="btn btn-header-action"><i class="fas fa-edit mr-2"></i> Create New Form</a> </div>
+  </header>
+
+
+  <main class="container page-container">
+    <h1 id="formNameTitle" class="page-title">Loading Results...</h1>
+
+     <div class="controls-bar">
+          <label for="sortOrder" class="sort-label">Sort:</label>
+          <select id="sortOrder" class="sort-select">
+               <option value="desc">Newest First</option>
+               <option value="asc">Oldest First</option>
+          </select>
+          <button id="compareCandidatesButton" class="btn btn-secondary" disabled><i class="fas fa-users mr-2"></i> Compare All Candidates</button>
+     </div>
+
+
+    <div id="resultsDisplay">
+      <p class="loading-message"><i class="fas fa-spinner fa-spin mr-2"></i> Loading submissions...</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">© 2025 SmartForm. All rights reserved.</div>
+  </footer>
+
+  <script src="result.js" defer></script>
+</body>
+</html>

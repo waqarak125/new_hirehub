@@ -1,0 +1,916 @@
+/* --- Base Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+    display: flex; /* Use flexbox for overall layout */
+    flex-direction: column; /* Stack header, content, footer */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
+/* --- Header Styles --- */
+header {
+    background-color: #00796b; /* Dark Teal */
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.auth-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.user-email {
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+    font-weight: 400;
+}
+
+.btn-header-action {
+    background-color: #004d40; /* Even Darker Teal */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.btn-header-action:hover {
+    background-color: #00332c; /* Darkest Teal */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.btn-logout {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.btn-logout:hover {
+    background-color: #c0392b;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* --- Landing Page Hero Section --- */
+.hero-section {
+    background: linear-gradient(to bottom, #00796b, #004d40); /* Dark Teal Gradient */
+    color: white;
+    padding: 4rem 2rem; /* Increased padding */
+    text-align: center; /* Center text by default */
+    flex-grow: 1; /* Allow hero section to take up available space */
+    display: flex;
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+}
+
+.hero-content {
+    max-width: 1000px; /* Max width for content */
+    margin: 0 auto;
+    display: flex; /* Use flexbox for text and image */
+    align-items: center; /* Vertically align items */
+    gap: 3rem; /* Space between text and image */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center items when wrapped */
+}
+
+.hero-text {
+    flex: 1; /* Allow text to grow */
+    min-width: 300px; /* Minimum width before shrinking */
+    text-align: left; /* Align text to the left */
+}
+
+.hero-text h1 {
+    font-size: 3.5rem; /* Large heading */
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1.25rem; /* Larger paragraph text */
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.hero-image {
+    flex: 1; /* Allow image container to grow */
+    min-width: 300px; /* Minimum width before shrinking */
+    display: flex;
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+}
+
+.hero-image img {
+    max-width: 100%; /* Ensure image is responsive */
+    height: auto;
+    border-radius: 10px; /* Rounded corners for image */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* Add shadow to image */
+}
+
+/* Start Now Button (using existing .btn-primary style) */
+.btn-primary {
+    background-color: #2ecc71; /* Green */
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.btn-primary:hover {
+    background-color: #27ae60;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* --- How it Works Section --- */
+.how-it-works-section {
+    background-color: #e0f2f1; /* Light Teal Background */
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.how-it-works-section h2 {
+    font-size: 2.5rem;
+    color: #004d40; /* Darkest Teal */
+    margin-top: 0;
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /* Space between steps */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.step {
+    flex: 1; /* Allow steps to grow */
+    min-width: 200px; /* Minimum width before shrinking */
+    max-width: 280px; /* Maximum width for each step */
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.step i {
+    font-size: 3rem;
+    color: #00796b; /* Dark Teal */
+    margin-bottom: 1rem;
+}
+
+.step h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.step p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0;
+}
+
+
+/* --- Container Styles --- */
+.container.editor-container {
+    max-width: 1100px; /* Increased max-width for wider form */
+    width: 95%; /* Use a percentage width for responsiveness */
+    margin: 2rem auto;
+    padding: 2rem 2.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-sizing: border-box;
+    flex-shrink: 0; /* Prevent editor from shrinking */
+}
+
+.main-content {
+    display: block !important;
+}
+
+/* --- Form Element Styles --- */
+label {
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #333;
+    font-size: 1rem;
+}
+
+select, input[type="text"], input[type="number"], textarea, input[type="file"] {
+    width: 100%;
+    padding: 0.85rem;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus, input:focus, textarea:focus {
+    outline: none;
+    border-color: #00796b; /* Dark Teal */
+    box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2); /* Dark Teal shadow */
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+/* AI Instructions Textarea specific */
+#instructions {
+    margin-top: 0.5rem; /* Space below the header */
+    margin-bottom: 0.5rem; /* Space before buttons */
+}
+
+/* Container for AI Instruction label and Priority button */
+.ai-instructions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space out label and button */
+    margin-top: 1.25rem; /* Match label margin-top */
+    margin-bottom: 0.5rem; /* Match label margin-bottom */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: 1rem; /* Space between items when wrapped */
+}
+
+.ai-instructions-header label {
+    margin: 0; /* Remove default label margins */
+    flex-shrink: 0; /* Prevent label from shrinking */
+}
+
+
+/* --- AI Buttons Container --- */
+.ai-buttons-container {
+    display: flex;
+    gap: 1rem; /* Space between AI buttons */
+    margin-top: 0.5rem; /* Space above the button container */
+    margin-bottom: 1.5rem; /* Space below the button container */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+/* General .btn for editor content (add manual, save publish) */
+.btn {
+    background-color: #2ecc71; /* Default green for primary actions */
+    color: white;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: inline-block;
+    /* margin-top: 1rem; Removed to be more specific or handled by parent */
+}
+.btn:hover:not(:disabled) {
+    background-color: #27ae60;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+.btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Secondary button style for Set AI Priorities */
+.btn-secondary {
+    background-color: #95a5a6; /* Grey */
+    color: white;
+}
+.btn-secondary:hover:not(:disabled) {
+    background-color: #7f8c8d; /* Darker Grey */
+}
+
+
+/* Specific AI Button Styles */
+.btn-ai, .btn-ai-priority {
+    flex-grow: 1; /* Allow buttons to share space */
+    min-width: 180px; /* Minimum width before wrapping */
+    padding: 0.8rem 1.2rem; /* Slightly adjusted padding */
+    font-size: 0.95rem;
+    margin-top: 0; /* Reset margin-top if handled by container */
+    display: flex; /* Use flex to align icon and text */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* Space between icon and text */
+}
+
+/* Decrease size of Set AI Priorities button */
+#openPrioritiesModalButton {
+    padding: 0.4rem 0.8rem; /* Even smaller padding */
+    font-size: 0.8rem; /* Even smaller font size */
+    min-width: auto; /* Allow shrinking */
+    flex-grow: 0; /* Prevent growing */
+}
+
+
+#sendInstructionsButton.btn-ai { /* Get AI Suggestions */
+    background-color: #e67e22; /* Orange */
+}
+#sendInstructionsButton.btn-ai:hover:not(:disabled) {
+    background-color: #d35400;
+}
+
+/* Styles for the main priority button when toggled */
+#openPrioritiesModalButton.toggle-on {
+    background-color: #2ecc71; /* Green when ON */
+}
+#openPrioritiesModalButton.toggle-on:hover:not(:disabled) {
+    background-color: #27ae60;
+}
+/* #openPrioritiesModalButton.toggle-off {
+    background-color: #9b59b6; /* Purple when OFF */
+/* } */
+/* #openPrioritiesModalButton.toggle-off:hover:not(:disabled) {
+    background-color: #8e44ad;
+} */
+/* Use btn-secondary for the default OFF state */
+
+
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-left: auto;
+    align-self: center;
+}
+.delete-btn:hover:not(:disabled) {
+    background: #c0392b;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+}
+.delete-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+
+.add-option-btn {
+    background-color: #00796b; /* Dark Teal */
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    margin-top: 0.5rem;
+    align-self: flex-start;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: flex; /* Use flex to align icon and text */
+    align-items: center;
+    gap: 0.4rem; /* Space between icon and text */
+}
+.add-option-btn:hover:not(:disabled) {
+    background-color: #004d40; /* Even Darker Teal */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+}
+.add-option-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+
+/* --- Section Styles (Builder, Preview, AI Block) --- */
+.form-builder, .form-preview, .ai-question-block {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+#questionList { margin-top: 1.5rem;} /* Space after AI block */
+#addManualQuestionButton { margin-top: 1rem; } /* Space above add manual q button */
+#savePublishButton { margin-top: 1rem; } /* Ensure save button has its own top margin */
+
+
+.form-builder strong, .form-preview strong, .ai-question-block strong {
+    display: block;
+    margin-bottom: 1.5rem;
+    color: #555;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.75rem;
+}
+
+/* ... (rest of your .question-block, .options-input-group, #formPreview styles) ... */
+.question-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    transition: box-shadow 0.3s ease;
+}
+.question-block:hover { box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+.question-block.ai-suggested-question { background-color: #eef; border-color: #aaddff; }
+.question-block > *:not(:last-child) { margin-bottom: 0.75rem; }
+.question-input { margin-bottom: 0.75rem; }
+.answer-type-select {
+    width: 100%; padding: 0.7rem; border: 1px solid #bdc3c7; border-radius: 6px;
+    font-size: 0.95rem; background-color: #fff; box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.answer-type-select:focus { outline: none; border-color: #00796b; /* Dark Teal */ box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2); }
+.options-input-group {
+    display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem;
+    padding-left: 1rem; border-left: 2px solid #eee; width: 100%; box-sizing: border-box;
+}
+.options-input-group input[type="text"] {
+    width: calc(100% - 30px); padding: 0.7rem; border: 1px solid #bdc3c7;
+    border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;
+}
+.options-input-group > div { display: flex; align-items: center; gap: 10px; }
+.options-input-group .remove-option-btn {
+    background: none; border: none; color: #e74c3c; cursor: pointer;
+    font-size: 1.3em; padding: 0 5px; line-height: 1;
+}
+.options-input-group .remove-option-btn:hover { color: #c0392b; }
+#formPreview {
+    background-color: #ffffff; padding: 1.5rem; border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); margin-top: 1rem;
+}
+.readonly-question {
+    padding: 1rem 1.25rem; background: #f9f9f9; margin-bottom: 1rem;
+    border: 1px solid #e0e0e0; border-radius: 8px; color: #444;
+    font-size: 1rem; word-wrap: break-word;
+}
+.readonly-question p:first-child { margin-bottom: 0.75rem; font-weight: 500; color: #333; }
+#formPreview input[type="text"], #formPreview input[type="number"], #formPreview textarea,
+#formPreview select, #formPreview input[type="file"] {
+    width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #ccc; border-radius: 6px;
+    font-size: 0.95rem; margin-top: 0.5rem; box-sizing: border-box; background-color: #fff;
+}
+#formPreview textarea { min-height: 60px; }
+#formPreview label {
+    font-weight: normal; font-size: 0.95rem; margin-top: 0; margin-bottom: 0;
+    display: flex; align-items: center; cursor: pointer;
+}
+#formPreview input[type="radio"], #formPreview input[type="checkbox"] {
+    margin-right: 0.5rem; cursor: pointer; width: auto; margin-top: 0; margin-bottom: 0;
+}
+#formPreview .rating-options, #formPreview .yes-no-options,
+#formPreview .mc-options, #formPreview .cb-options {
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-top: 0.5rem;
+}
+#formPreview .rating-options span { margin-right: 0.5rem; align-self: center; }
+#aiQuestionContent {}
+.ai-single-question {
+    margin-bottom: 1rem; padding: 1rem; border: 1px solid #eee; border-radius: 6px;
+    background-color: #fff; display: none;
+}
+.ai-single-question:last-child { margin-bottom: 0; }
+.ai-single-question p { margin: 0.3rem 0; font-size: 0.95rem; }
+.ai-single-question strong {
+    font-weight: 600; color: #555; display: inline; border-bottom: none;
+    padding-bottom: 0; margin-bottom: 0; font-size: 0.95rem;
+}
+
+
+/* --- Modal Styles --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    /* Use flexbox for centering */
+    /*display: flex;
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center */
+    /* Add backdrop blur */
+    backdrop-filter: blur(5px); /* Blur the background */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    /* Remove margin and padding-top as flexbox handles centering */
+    margin: 0;
+    padding: 25px;
+    border: 1px solid #888;
+    width: 90%; /* Use a percentage width for responsiveness */
+    max-width: 800px; /* Increased max-width for landscape layout */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    display: flex; /* Use flex for modal content layout */
+    flex-direction: column;
+    gap: 1rem; /* Space between sections */
+    /* Ensure content fits without internal scrolling if possible */
+    /* Removed max-height and overflow-y: visible/auto to rely on browser default modal scrolling if content overflows viewport */
+}
+
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+.modal-content p {
+    color: #555;
+    margin-bottom: 1rem;
+}
+/* Remove specific textarea style from modal-content as it's replaced */
+/* .modal-content textarea {
+    width: calc(100% - 1.7rem);
+    min-height: 100px;
+    margin-bottom: 1rem;
+} */
+.modal-content label { /* Style labels within modal if any */
+    margin-top: 0; /* Reset margin-top */
+    margin-bottom: 0.25rem; /* Small space below label */
+    font-weight: 500;
+}
+
+/* Priority Toggle Switch Container */
+.priority-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+.priority-toggle-container label {
+    margin-bottom: 0; /* Align label vertically */
+    font-weight: 600;
+    color: #333;
+}
+
+/* --- Toggle Switch Styling --- */
+/* Hide the default checkbox */
+.priority-toggle-container input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The label acts as the switch container */
+.toggle-switch-label {
+  position: relative;
+  display: inline-block;
+  width: 50px; /* Width of the switch */
+  height: 24px; /* Height of the switch */
+  background-color: #ccc;
+  border-radius: 12px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex-shrink: 0; /* Prevent label from shrinking */
+}
+
+/* The inner part (track) */
+.toggle-switch-label .toggle-switch-inner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background-color: #ccc;
+  transition: background-color 0.3s;
+}
+
+/* The switch (thumb) */
+.toggle-switch-label .toggle-switch-switch {
+  display: block;
+  width: 20px; /* Size of the thumb */
+  height: 20px;
+  background-color: white;
+  border-radius: 50%; /* Make it round */
+  position: absolute;
+  top: 2px; /* Center vertically */
+  left: 2px; /* Initial position */
+  transition: transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* When the checkbox is checked */
+.priority-toggle-container input[type="checkbox"]:checked + .toggle-switch-label {
+  background-color: #2ecc71; /* Green when ON */
+}
+
+.priority-toggle-container input[type="checkbox"]:checked + .toggle-switch-label .toggle-switch-inner {
+   background-color: #2ecc71; /* Green when ON */
+}
+
+.priority-toggle-container input[type="checkbox"]:checked + .toggle-switch-label .toggle-switch-switch {
+  transform: translateX(26px); /* Move thumb to the right (50px width - 20px thumb - 2*2px padding) */
+}
+
+
+/* Priority Inputs Container */
+.priority-inputs-container {
+    display: grid; /* Use CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax for wider items */
+    gap: 1.5rem; /* Space between grid items */
+    margin-bottom: 1rem; /* Space below the grid */
+}
+
+.priority-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between label and input */
+    justify-content: space-between; /* Distribute space */
+    background-color: #f9f9f9; /* Light background for each item */
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.priority-item label {
+    flex-grow: 1; /* Allow label to take up space */
+    margin-bottom: 0;
+    font-weight: 500;
+    color: #555;
+}
+
+.priority-item input[type="number"] {
+    width: 80px; /* Fixed width for number input */
+    padding: 0.5rem;
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    text-align: center; /* Center the number */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 0; /* Remove default margin */
+    flex-shrink: 0; /* Prevent input from shrinking */
+}
+.priority-item input[type="number"]:focus {
+     outline: none;
+     border-color: #00796b; /* Dark Teal */
+     box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2); /* Dark Teal shadow */
+}
+/* Style for disabled inputs */
+.priority-item input[type="number"]:disabled {
+    background-color: #e0e0e0; /* Lighter grey when disabled */
+    cursor: not-allowed;
+    border-color: #ccc;
+    box-shadow: none;
+}
+
+
+/* Total Weight Display */
+.total-weight {
+    margin-top: 0; /* Adjusted margin */
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.total-weight span {
+    color: #333;
+}
+.total-weight.error {
+    background-color: #fdd;
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+.total-weight.error span {
+     color: #e74c3c;
+}
+
+
+/* Modal Error Message */
+#modalWeightError {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #e74c3c;
+    text-align: center;
+    padding: 0; /* Remove padding from general error-message style */
+    background-color: transparent; /* Remove background from general error-message style */
+    border: none; /* Remove border from general error-message style */
+}
+
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* --- Utility Styles --- */
+.error-message {
+    color: #e74c3c; font-size: 0.9rem; margin-top: 0.5rem; padding: 0.5rem;
+    background-color: #fdd; border: 1px solid #e74c3c; border-radius: 4px; text-align: center;
+}
+.loading-message { color: #888; font-style: italic; text-align: center; padding: 1rem; }
+.success-message {
+    color: #2ecc71; font-size: 1rem; text-align: center; padding: 1rem;
+    background-color: #e6ffed; border: 1px solid #2ecc71; border-radius: 4px;
+}
+
+ .published-links-container {
+     margin-top: 1.5rem; padding: 1rem; border: 1px dashed #ccc; border-radius: 8px;
+     background-color: #eaf4ff; text-align: center;
+ }
+ .published-links-container p { margin-bottom: 0.75rem; font-weight: 500; color: #333; }
+ .published-links-container .link-buttons {
+     display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
+ }
+ .published-links-container .link-buttons button {
+     padding: 0.8rem 1.2rem; border: none; border-radius: 8px; cursor: pointer;
+     font-size: 0.95rem; font-weight: 500;
+     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+     display: flex; /* Use flex to align icon and text */
+     align-items: center;
+     gap: 0.4rem; /* Space between icon and text */
+     justify-content: center;
+ }
+ .published-links-container .link-buttons .copy-link-btn { background-color: #00796b; /* Dark Teal */ color: white; }
+ .published-links-container .link-buttons .copy-link-btn:hover { background-color: #004d40; /* Even Darker Teal */ box-shadow: 0 3px 7px rgba(0,0,0,0.15); }
+ .published-links-container .link-buttons .view-results-btn { background-color: #e67e22; color: white; }
+ .published-links-container .link-buttons .view-results-btn:hover { background-color: #d35400; box-shadow: 0 3px 7px rgba(0,0,0,0.15); }
+
+
+/* --- Footer Styles --- */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 0.9rem;
+    margin-top: auto; /* Push footer to the bottom */
+    flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    header { flex-direction: column; padding: 1rem; text-align: center; }
+    .auth-actions { margin-top: 0.75rem; flex-wrap: wrap; justify-content: center; }
+    .auth-actions .btn, .auth-actions .user-email { margin-bottom: 0.5rem; }
+
+    .hero-section { padding: 3rem 1rem; }
+    .hero-content { flex-direction: column; gap: 2rem; } /* Stack text and image */
+    .hero-text { text-align: center; } /* Center text on small screens */
+    .hero-text h1 { font-size: 2.5rem; }
+    .hero-text p { font-size: 1.1rem; }
+
+    .how-it-works-section { padding: 3rem 1rem; }
+    .how-it-works-section h2 { font-size: 2rem; margin-bottom: 2rem; }
+    .steps-container { flex-direction: column; align-items: center; } /* Stack steps */
+    .step { max-width: 300px; /* Adjust max width for stacked steps */ }
+
+
+    .container.editor-container { margin: 1rem; padding: 1.5rem; }
+
+    /* Adjust AI instructions header on small screens */
+    .ai-instructions-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    .ai-instructions-header label {
+        width: 100%; /* Label takes full width */
+    }
+    .ai-instructions-header .btn-ai-priority {
+        width: 100%; /* Button takes full width */
+    }
+
+
+    .ai-buttons-container { flex-direction: column; } /* Stack AI buttons */
+    .btn-ai, .btn-ai-priority { width: 100%; box-sizing: border-box; }
+
+
+    .editor-container .btn { width: 100%; box-sizing: border-box; }
+    .editor-container .delete-btn, .editor-container .add-option-btn { width: auto; }
+    .delete-btn { margin-left: 0; margin-top: 0.5rem; align-self: flex-start; }
+    .question-block > *:not(:last-child) { margin-bottom: 0.5rem; }
+    .options-input-group { padding-left: 0.5rem; }
+    .published-links-container { padding: 0.75rem; }
+    .published-links-container p { margin-bottom: 0.5rem; }
+    .published-links-container .link-buttons { flex-direction: column; gap: 10px; }
+    .published-links-container .link-buttons button { width: 100%; box-sizing: border-box; }
+
+    .modal-content {
+        width: 90%; /* Adjust modal width */
+        margin: auto; /* Center modal */
+        /* max-width: 90%; */ /* Allow modal to be wider on tablets */
+        /* Re-enable internal scrolling on smaller screens if content exceeds height */
+        /* max-height: calc(100vh - 120px); */ /* Removed for better centering */
+        /* overflow-y: auto; */ /* Removed for better centering */
+    }
+     /* Stack priority items in modal on smaller screens */
+    .priority-inputs-container {
+        grid-template-columns: 1fr; /* Single column on small screens */
+        gap: 1rem;
+    }
+    .priority-item input[type="number"] {
+        width: 80px; /* Keep fixed width for number input */
+        text-align: center; /* Center number */
+    }
+}
+
+@media (max-width: 480px) {
+    header { font-size: 1.3rem; padding: 0.75rem; }
+    .auth-actions { gap: 0.5rem; }
+    .btn-header-action, .btn-logout { font-size: 0.75rem; padding: 0.3rem 0.6rem; }
+    .user-email { font-size: 0.7rem; }
+
+    .hero-section { padding: 2rem 0.75rem; }
+    .hero-text h1 { font-size: 2rem; }
+    .hero-text p { font-size: 1rem; }
+    .btn-primary { padding: 0.8rem 1.5rem; font-size: 1rem; }
+
+    .how-it-works-section { padding: 2rem 0.75rem; }
+    .how-it-works-section h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+    .step { padding: 1.5rem; }
+    .step i { font-size: 2.5rem; }
+    .step h3 { font-size: 1.2rem; }
+    .step p { font-size: 0.9rem; }
+
+
+    .container.editor-container { padding: 1rem; }
+    label { font-size: 0.95rem; }
+    select, input[type="text"], input[type="number"], textarea, .editor-container .btn, input[type="file"] {
+        font-size: 0.95rem; padding: 0.75rem 1rem;
+    }
+    .delete-btn, .add-option-btn { padding: 0.5rem 0.8rem; font-size: 0.85rem; }
+    .readonly-question { padding: 0.8rem; }
+
+    .modal-content { width: 95%; margin: auto; padding: 15px; }
+    .close-button { font-size: 24px; top: 5px; right: 15px; }
+    .modal-content h2 { font-size: 1.3rem; }
+    .modal-content p { font-size: 0.9rem; }
+    .priority-toggle-container label { font-size: 0.9rem; }
+    .priority-item label { font-size: 0.9rem; }
+    .priority-item input[type="number"] { font-size: 0.9rem; padding: 0.4rem; }
+    .total-weight { font-size: 0.95rem; padding: 0.6rem; }
+    #modalWeightError { font-size: 0.8rem; }
+
+    footer { padding: 1rem; font-size: 0.8rem; }
+}

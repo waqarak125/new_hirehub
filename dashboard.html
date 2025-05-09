@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartForm Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyD0j1reBX48XiPuxkQvKhfgelC-sFH8wKI",
+            authDomain: "formsmart-7a3e7.firebaseapp.com",
+            databaseURL: "https://formsmart-7a3e7-default-rtdb.firebaseio.com",
+            projectId: "formsmart-7a3e7",
+            storageBucket: "formsmart-7a3e7.firebasestorage.app",
+            messagingSenderId: "51184438401",
+            appId: "1:51184438401:web:8175270b3571b7d7925180",
+            measurementId: "G-28KJT44LN2"
+        };
+        if (!firebase.apps.length) {
+            try { firebase.initializeApp(firebaseConfig); console.log("Firebase App initialized (dashboard.html)."); }
+            catch (error) { console.error("CRITICAL Firebase Init Error (dashboard.html):", error);
+                document.addEventListener('DOMContentLoaded', () => {
+                     document.body.innerHTML = '<div style="padding:20px;text-align:center;"><h1>App Init Error</h1><p>Could not initialize Firebase. Check console and config.</p></div>';
+                });
+            }
+        } else { firebase.app(); console.log("Firebase App already initialized (dashboard.html)."); }
+        let databaseURL = firebaseConfig.databaseURL;
+    </script>
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-layout">
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h2 class="site-title">SmartForm</h2>
+                <button id="toggleSidebarBtn" class="sidebar-toggle-btn md-hidden"><i class="fas fa-bars"></i></button>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-section="home"><i class="fas fa-home"></i>Home</button>
+                <button class="nav-btn" data-section="create"><i class="fas fa-pencil-alt"></i>Create Form</button>
+                <button class="nav-btn" data-section="myForms"><i class="fas fa-folder"></i>My Forms</button>
+                <button class="nav-btn" data-section="stats"><i class="fas fa-chart-bar"></i>Stats</button>
+            </nav>
+        </aside>
+
+        <main id="mainContent" class="main-content-area" style="display: none;">
+            <header class="main-header">
+                <div class="header-left">
+                    <button id="collapseSidebarBtn" class="sidebar-collapse-btn"><i class="fas fa-bars"></i></button>
+                    <span id="pageTitle" class="page-title">Dashboard</span>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <span id="userEmailDisplay" class="user-email">Loading...</span>
+                         <button id="logoutButton" class="btn btn-secondary btn-logout" style="display: none;"><i class="fas fa-sign-out-alt mr-1"></i> Logout</button>
+                    </div>
+                     <div class="plan-info"><button id="planButton" class="btn btn-plan">Free Plan</button></div>
+                    <div class="profile-menu">
+                         <button id="profileMenuButton" class="profile-avatar-btn">
+                              <img id="userProfilePicture" src="https://placehold.co/40x40/004d40/e0f2f1?text=U" alt="User Avatar" class="avatar-img">
+                         </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-sections-container">
+                <section id="home" class="dashboard-section">
+                    <h1 class="section-heading">Welcome back!</h1>
+                    <div class="stats-grid">
+                        <div class="stat-card"><i class="fas fa-folder mr-2"></i>Forms Created: <strong id="formsCreatedCount">0</strong></div>
+                        <div class="stat-card"><i class="fas fa-users mr-2"></i>Total Responses: <strong id="totalResponsesCount">0</strong></div>
+                        <div class="stat-card"><i class="fas fa-chart-line mr-2"></i>New This Week: <strong id="newThisWeekCount">0</strong></div>
+                        <div class="stat-card"><i class="fas fa-gem mr-2"></i>Plan: <strong id="userPlan">Free</strong></div>
+                    </div>
+                </section>
+
+                <section id="create" class="dashboard-section hidden">
+                    <h1 class="section-heading">Create a New Form</h1>
+                    <div class="create-form-section">
+                        <p>Ready to build a new form?</p>
+                        <a href="index.html" class="btn btn-primary"><i class="fas fa-plus-circle mr-2"></i> Open Form Builder</a>
+                    </div>
+                </section>
+
+                <section id="myForms" class="dashboard-section hidden">
+                    <h1 class="section-heading">My Forms</h1>
+                    <div id="userFormsList" class="forms-list">
+                        <p class="status-message loading"><i class="fas fa-spinner fa-spin mr-2"></i> Loading your forms...</p>
+                    </div>
+                </section>
+
+                <section id="stats" class="dashboard-section hidden">
+                    <h1 id="statsSectionHeading" class="section-heading">Your Statistics</h1>
+                    <div class="stats-content">
+                         <p id="statsIntroText">Overview of your form usage. Select a form from "My Forms" to view its specific stats.</p>
+                         
+                         <div id="generalStatsChartContainer" class="chart-container-wrapper">
+                            <h2 class="chart-title">Overall Form Responses</h2>
+                            <div class="chart-container">
+                                <canvas id="responsesChart"></canvas> </div>
+                         </div>
+
+                         <div id="formSpecificStatsContainer" class="hidden">
+                            <div class="chart-grid">
+                                <div class="chart-container-wrapper">
+                                    <h2 class="chart-title">Responses Over Time</h2>
+                                    <div class="chart-container">
+                                        <canvas id="responsesOverTimeChart"></canvas>
+                                    </div>
+                                    <p id="responsesOverTimeMessage" class="chart-message"></p>
+                                </div>
+                                <div class="chart-container-wrapper">
+                                    <h2 class="chart-title">Answer Distribution (Sample Question)</h2>
+                                     <select id="statsQuestionSelect" class="theme-select" style="margin-bottom: 1rem; display: none;"></select>
+                                    <div class="chart-container">
+                                        <canvas id="answerDistributionChart"></canvas>
+                                    </div>
+                                    <p id="answerDistributionMessage" class="chart-message"></p>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay show">
+        <div class="spinner"></div>
+        <p>Authenticating...</p>
+    </div>
+
+    <script src="auth.js" defer></script>
+    <script src="dashboard.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,766 @@
+/* --- Base Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: #f4f6f8; /* Match editor background */
+    color: #333;
+    line-height: 1.6;
+    overflow: hidden; /* Prevent body scroll, layout handles it */
+}
+
+/* --- Dashboard Layout --- */
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh; /* Ensure layout takes full viewport height */
+}
+
+/* --- Sidebar Styles --- */
+.sidebar {
+    width: 250px; /* Fixed width sidebar */
+    background-color: #004d40; /* Darker Teal */
+    color: white;
+    padding: 1.5rem;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: width 0.3s ease, padding 0.3s ease, transform 0.3s ease; /* Smooth toggle & collapse */
+    flex-shrink: 0; /* Prevent shrinking */
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Hide content when collapsing */
+}
+
+/* Sidebar collapsed state for desktop */
+.sidebar.collapsed {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+.sidebar.collapsed .sidebar-header h2,
+.sidebar.collapsed .sidebar-nav {
+    display: none; /* Hide text and nav items when collapsed */
+}
+.sidebar.collapsed .sidebar-header {
+    justify-content: center; /* Center the toggle button if it were visible */
+}
+
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.site-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #e0f2f1; /* Light Teal */
+}
+
+.sidebar-toggle-btn { /* Mobile toggle */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: none; /* Hidden by default on desktop */
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Space between nav items */
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: #e0f2f1; /* Light Teal */
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Space between icon and text */
+}
+
+.nav-btn:hover {
+    background-color: #00796b; /* Dark Teal */
+    color: white;
+}
+
+.nav-btn.active {
+    background-color: #00796b; /* Dark Teal */
+    color: white;
+    font-weight: 600;
+    box-shadow: inset 4px 0 0 0 #2ecc71; /* Green indicator on the left */
+}
+.nav-btn i {
+    font-size: 1.1rem;
+    width: 20px; /* Ensure icon takes up space for alignment */
+    text-align: center;
+}
+
+
+/* --- Main Content Area --- */
+.main-content-area {
+    flex-grow: 1; /* Takes remaining space */
+    overflow-y: auto; /* Enable scrolling for content */
+    display: flex;
+    flex-direction: column;
+    transition: margin-left 0.3s ease; /* For when sidebar collapses */
+}
+
+/* --- Main Header (Top Bar) --- */
+.main-header {
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Keep header at the top */
+    top: 0;
+    z-index: 10; /* Ensure it's above scrolling content */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sidebar-collapse-btn { /* Desktop collapse */
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+.sidebar-collapse-btn:hover {
+    color: #00796b; /* Dark Teal */
+}
+
+.page-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Space between right-side elements */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+.user-email {
+    font-weight: 500;
+}
+
+.btn { /* General button style if needed */
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.btn-primary {
+    background-color: #00796b; /* Dark Teal */
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #004d40; /* Even Darker Teal */
+}
+.btn-secondary {
+    background-color: #6c757d; /* Bootstrap secondary-ish */
+    color: white;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+.btn-info {
+    background-color: #17a2b8; /* Bootstrap info-ish */
+    color: white;
+}
+.btn-info:hover {
+    background-color: #138496;
+}
+
+
+.btn-logout {
+    /* Uses btn-secondary styles */
+    padding: 0.4rem 0.8rem; /* Smaller padding for header button */
+    font-size: 0.85rem;
+}
+
+.plan-info {
+    /* Placeholder for plan info styling */
+}
+.btn-plan {
+     background-color: #e0f2f1; /* Light teal background */
+     color: #004d40; /* Darkest Teal text */
+     padding: 0.4rem 0.8rem;
+     font-size: 0.85rem;
+     border-radius: 20px; /* Pill shape */
+     font-weight: 600;
+     box-shadow: none;
+     transition: background-color 0.3s ease;
+     border: none;
+}
+.btn-plan:hover {
+     background-color: #b2dfdb; /* Slightly darker light teal */
+}
+
+
+.profile-menu {
+    /* Placeholder for profile menu styling */
+}
+.profile-avatar-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* --- Dashboard Sections Container --- */
+.dashboard-sections-container {
+    padding: 1.5rem 2rem;
+    flex-grow: 1; /* Allow container to take available space */
+}
+
+/* --- Individual Dashboard Section Styles --- */
+.dashboard-section {
+    margin-bottom: 2.5rem; /* Space between sections */
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.dashboard-section.hidden {
+    display: none;
+}
+
+.section-heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-top: 0; /* Remove default h1 margin */
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e0e0e0; /* Light grey underline */
+    padding-bottom: 0.75rem;
+}
+
+/* --- Home Section (Stats Grid) --- */
+#home .stats-grid { /* More specific selector for home section */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive grid */
+    gap: 1.5rem;
+}
+
+#home .stat-card {
+    background-color: #f9f9f9; /* Slightly different background for cards */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.07);
+    font-size: 1.1rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+#home .stat-card strong {
+    color: #004d40; /* Darkest Teal for emphasis */
+    font-weight: 700; /* Bolder */
+    font-size: 1.3rem; /* Larger count */
+    margin-left: auto; /* Push count to the right */
+}
+#home .stat-card i {
+    color: #00796b; /* Dark Teal icon */
+    font-size: 1.5rem; /* Larger icon */
+}
+
+
+/* --- Create Form Section --- */
+.create-form-section {
+    /* background-color: #ffffff; */ /* Section already has background */
+    /* padding: 2rem; */ /* Section already has padding */
+    /* border-radius: 8px; */ /* Section already has border-radius */
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */ /* Section already has box-shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the left */
+    gap: 1.5rem;
+}
+.create-form-section p {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #555;
+}
+.theme-select-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap; /* Allow wrapping */
+}
+.theme-label {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.theme-select {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    cursor: pointer;
+    min-width: 200px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.theme-select:focus {
+     outline: none;
+     border-color: #00796b; /* Match editor */
+     box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2); /* Match editor */
+}
+.create-form-section .btn-primary {
+     /* Uses btn-primary styles */
+     align-self: flex-start; /* Align button to the left */
+}
+
+
+/* --- My Forms Section --- */
+.forms-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between form items */
+}
+
+.form-item {
+    background-color: #fdfdfd; /* Slightly off-white for items */
+    padding: 1.25rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e9ecef; /* Lighter border */
+    /* box-shadow: 0 1px 3px rgba(0,0,0,0.08); */ /* Using border instead of shadow for a flatter look */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+.form-item:hover {
+    border-color: #ced4da;
+    background-color: #ffffff;
+}
+
+.form-details {
+    flex-grow: 1;
+    margin-right: 1rem; /* Space between details and actions */
+}
+.form-details .form-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #004d40; /* Darkest Teal */
+    margin-bottom: 0.25rem;
+}
+.form-details .form-meta {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.75rem; /* Space between action buttons */
+    flex-shrink: 0; /* Prevent actions from shrinking */
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+    justify-content: flex-end; /* Align buttons to the right if they wrap */
+}
+
+.form-actions .btn {
+    padding: 0.5rem 1rem; /* Smaller padding for form action buttons */
+    font-size: 0.9rem;
+}
+
+
+/* --- Stats Section --- */
+.stats-content {
+    /* background-color: #ffffff; */ /* Section already has background */
+    /* padding: 2rem; */ /* Section already has padding */
+    /* border-radius: 8px; */ /* Section already has border-radius */
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */ /* Section already has box-shadow */
+}
+.stats-content p {
+     margin-top: 0;
+     margin-bottom: 1.5rem;
+     color: #555;
+}
+/* Wrapper for chart containers to add padding/margin */
+.chart-container-wrapper {
+    margin-bottom: 2rem; /* Space between charts */
+    padding: 1rem; /* Add some padding inside the wrapper */
+    border: 1px solid #e0e0e0; /* Optional: Add a border around chart area */
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Optional: Light background for chart area */
+}
+
+.chart-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center; /* Center chart titles */
+}
+
+.chart-container {
+    position: relative; /* Needed for Chart.js responsiveness */
+    height: 350px; /* Set a height for the chart */
+    width: 100%; /* Make the container take full width */
+    max-width: 700px; /* Max width for the chart */
+    margin: 0 auto; /* Center the chart */
+    /* Add overflow-x: auto; for horizontal scrolling if needed, but Chart.js responsiveness should handle this */
+    /* overflow-x: auto; */
+}
+
+/* Ensure canvas itself is responsive within its container */
+.chart-container canvas {
+    display: block; /* Remove extra space below canvas */
+    width: 100% !important; /* Override inline styles if any */
+    height: 100% !important; /* Override inline styles if any */
+}
+
+
+/* --- Loading Overlay --- */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.85); /* Slightly more opaque */
+    display: flex; /* Hidden by default, shown by JS */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+    color: #333; /* Darker text */
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Start transparent */
+    visibility: hidden; /* Start hidden */
+}
+.loading-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-left-color: #00796b; /* Dark Teal spinner */
+    animation: spin 1s ease infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Status Message Styles (Match other pages) --- */
+.status-message {
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 800px; /* Max width for message box */
+    box-sizing: border-box;
+    margin: 1rem auto; /* Center if used alone */
+    display: flex; /* For icon */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid transparent;
+}
+.status-message.loading {
+    color: #555; /* Darker grey for loading text */
+    background-color: #e9ecef; /* Lighter grey background */
+    border-color: #ced4da; /* Grey border */
+}
+.status-message.error {
+    color: #721c24; /* Darker red text */
+    background-color: #f8d7da; /* Lighter red background */
+    border-color: #f5c6cb; /* Reddish border */
+}
+.status-message.success {
+    color: #155724; /* Darker green text */
+    background-color: #d4edda; /* Lighter green background */
+    border-color: #c3e6cb; /* Greenish border */
+}
+.status-message.info {
+     color: #004085; /* Darker blue text */
+     background-color: #cce5ff; /* Lighter blue background */
+     border-color: #b8daff; /* Bluish border */
+}
+.status-message i { /* Ensure icons in status messages have good contrast */
+    opacity: 0.8;
+}
+
+/* Chart specific messages */
+.chart-message {
+    text-align: center;
+    color: #555;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) { /* Adjust breakpoint for desktop sidebar collapse */
+    .sidebar-collapse-btn {
+        display: block; /* Show desktop collapse button */
+    }
+    .sidebar-toggle-btn {
+        display: none; /* Hide mobile toggle on larger screens if desktop collapse is active */
+    }
+    /* If sidebar is not collapsed, main content has margin */
+    .main-content-area.sidebar-active {
+        /* margin-left: 250px; */ /* This might not be needed if sidebar is fixed/absolute on mobile */
+    }
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 220px; /* Slightly smaller sidebar for tablets */
+        transform: translateX(-220px); /* Hide by default */
+        position: fixed; /* Fixed position for mobile overlay */
+        height: 100%;
+        z-index: 500; /* Above main content */
+        padding: 1rem;
+    }
+    .sidebar.show { /* For mobile toggle */
+        transform: translateX(0); /* Show sidebar */
+    }
+    .sidebar.collapsed { /* Ensure collapsed state is also off-screen for mobile */
+        transform: translateX(-220px);
+        width: 220px; /* Reset width when toggling from collapsed to shown on mobile */
+    }
+
+    .sidebar-toggle-btn { /* Mobile toggle */
+        display: block; /* Show toggle button on mobile */
+    }
+    .sidebar-collapse-btn { /* Desktop collapse */
+         display: none; /* Hide desktop collapse button on mobile */
+    }
+
+    .sidebar-header {
+        margin-bottom: 1.5rem;
+    }
+    .site-title {
+        font-size: 1.6rem;
+    }
+    .sidebar-nav {
+        gap: 0.5rem;
+    }
+    .nav-btn {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .main-content-area {
+        /* No margin-left adjustment needed if mobile sidebar is an overlay */
+    }
+
+    .main-header {
+        padding: 0.75rem 1.5rem;
+    }
+    .page-title {
+        font-size: 1.2rem;
+    }
+    .header-right {
+        gap: 1rem;
+    }
+     .user-info { font-size: 0.85rem; gap: 0.3rem;}
+     .btn-logout { padding: 0.3rem 0.6rem; font-size: 0.8rem;}
+     .btn-plan { padding: 0.3rem 0.6rem; font-size: 0.8rem;}
+     .profile-avatar-btn { width: 35px; height: 35px;}
+
+
+    .dashboard-sections-container {
+        padding: 1rem 1.5rem;
+    }
+    .dashboard-section {
+        margin-bottom: 2rem;
+        padding: 1.25rem;
+    }
+    .section-heading {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+    }
+
+    #home .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+    #home .stat-card {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    #home .stat-card strong { font-size: 1.1rem; }
+    #home .stat-card i { font-size: 1.3rem; }
+
+
+    .create-form-section {
+        /* padding: 1.5rem; */ /* Already handled by section padding */
+        gap: 1rem;
+    }
+     .theme-select-container { gap: 0.75rem; flex-direction: column; align-items: flex-start;}
+     .theme-select { width: 100%; box-sizing: border-box; font-size: 0.9rem;}
+     .create-form-section .btn-primary { width: 100%; box-sizing: border-box; justify-content: center;}
+
+
+    .form-item {
+        padding: 1rem 1.25rem;
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    .form-details {
+        margin-right: 0;
+        width: 100%;
+    }
+    .form-details .form-name {
+        font-size: 1rem;
+    }
+    .form-details .form-meta {
+        font-size: 0.8rem;
+    }
+    .form-actions {
+        width: 100%;
+        justify-content: flex-start; /* Align buttons to the left when stacked */
+        gap: 0.5rem;
+    }
+     .form-actions .btn { padding: 0.4rem 0.8rem; font-size: 0.85rem;}
+
+
+    /* .stats-content { */
+        /* padding: 1.5rem; */ /* Already handled by section padding */
+    /* } */
+     .stats-content p { margin-bottom: 1rem;}
+     .chart-container { height: 300px;} /* Adjust chart height for tablets */
+
+    .loading-overlay.show p { font-size: 1rem;}
+    .spinner { width: 30px; height: 30px;}
+
+    .status-message { padding: 0.8rem 1rem; font-size: 0.9rem;}
+}
+
+@media (max-width: 480px) {
+    .sidebar { width: 200px; transform: translateX(-200px);}
+    .sidebar.collapsed { transform: translateX(-200px); width: 200px; }
+
+
+    .main-header { padding: 0.6rem 1rem;}
+    .page-title { font-size: 1.1rem;}
+     .header-right { gap: 0.8rem;}
+     .user-info { font-size: 0.8rem; gap: 0.2rem;}
+     .btn-logout { padding: 0.2rem 0.5rem; font-size: 0.75rem;}
+     .btn-plan { padding: 0.2rem 0.5rem; font-size: 0.75rem;}
+     .profile-avatar-btn { width: 30px; height: 30px;}
+
+
+    .dashboard-sections-container {
+        padding: 0.8rem 1rem;
+    }
+    .dashboard-section {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+    }
+    .section-heading {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        padding-bottom: 0.4rem;
+    }
+
+    #home .stats-grid {
+        grid-template-columns: 1fr; /* Single column for very small screens */
+        gap: 0.8rem;
+    }
+    #home .stat-card {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    /* .create-form-section { */
+        /* padding: 0.8rem; */ /* Already handled by section padding */
+        /* gap: 0.8rem; */
+    /* } */
+     .theme-label { font-size: 0.85rem; gap: 0.4rem;}
+     .create-form-section .btn-primary { padding: 0.7rem 1rem; font-size: 0.9rem;}
+
+
+    .form-item {
+        padding: 0.8rem 1rem;
+        gap: 0.6rem;
+    }
+    .form-details .form-name {
+        font-size: 0.9rem;
+    }
+    .form-details .form-meta {
+        font-size: 0.75rem;
+    }
+     .form-actions { gap: 0.4rem;}
+     .form-actions .btn { padding: 0.3rem 0.6rem; font-size: 0.8rem;}
+
+
+    /* .stats-content { */
+        /* padding: 1rem; */ /* Already handled by section padding */
+    /* } */
+     .stats-content p { margin-bottom: 0.8rem;}
+     .chart-container { height: 250px;} /* Adjust chart height for small screens */
+
+    .loading-overlay.show p { font-size: 0.9rem;}
+    .spinner { width: 25px; height: 25px;}
+
+    .status-message { padding: 0.6rem 0.8rem; font-size: 0.8rem;}
+}
+

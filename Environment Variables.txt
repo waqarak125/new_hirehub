@@ -1,0 +1,16 @@
+Environment Variables
+The .env file is for storing secrets for your app, like an API key. Any project member can see the contents in the same way that you can, and everyone else can just see the variable names. Learn How to Use Environment Variables
+
+Variable Name
+GEMINI_API_KEY
+
+Value
+AIzaSyDqqiQUiFAWM653VprKaxcIhslP_Rv7PuI
+
+Variable Name
+FIREBASE_DATABASE_URL
+
+Value
+https://formsmart-7a3e7-default-rtdb.firebaseio.com
+
+Add a variable

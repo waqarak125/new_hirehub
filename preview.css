@@ -1,0 +1,326 @@
+/* --- Base Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: #f4f6f8; /* Match editor background */
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- Header Styles --- */
+header {
+    background-color: #00796b; /* Match editor header */
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 100%;
+    margin-bottom: 2rem;
+     flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+/* --- Page Container (for centering main content) --- */
+.page-container {
+    display: flex;
+    flex-direction: column; /* Stack title and form content */
+    align-items: center; /* Horizontally center children */
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    flex-grow: 1; /* Allow container to take available space */
+}
+
+/* --- Container Styles --- */
+.container {
+    width: 100%;
+    max-width: 900px; /* Increased width for the form container */
+    padding: 2rem 2.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Match editor shadow */
+    border-radius: 12px;
+    box-sizing: border-box;
+     flex-shrink: 0; /* Prevent container from shrinking */
+}
+
+.page-title { /* Style for h1 like Form Name */
+    font-size: 1.8rem; /* Adjusted size */
+    font-weight: 700;
+    color: #333; /* Match editor */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1.5rem; /* Space below title */
+}
+
+
+/* --- Form Styles --- */
+#dynamicForm {
+     margin-top: 1rem; /* Adjusted margin */
+}
+
+.form-question {
+    margin-bottom: 2rem; /* Increased space between questions */
+    padding: 1rem 1.5rem; /* Reduced padding to make inputs wider within the block */
+    background-color: #f9f9f9; /* Match editor */
+    border: 1px solid #e0e0e0; /* Match editor */
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Match editor */
+}
+
+.form-question label {
+    font-weight: 600;
+    margin-bottom: 0.5rem; /* Adjusted margin */
+    display: block;
+    color: #333; /* Match editor */
+    font-size: 1rem; /* Standard size */
+}
+
+.form-question input[type="text"],
+.form-question input[type="number"],
+.form-question textarea,
+.form-question select,
+.form-question input[type="file"] {
+    width: 100%;
+    padding: 0.85rem; /* Match editor */
+    margin-top: 0.25rem; /* Match editor */
+    margin-bottom: 0.4rem; /* Slightly reduced margin below input */
+    border: 1px solid #bdc3c7; /* Match editor */
+    border-radius: 8px; /* Match editor */
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Match editor */
+    background-color: #fff;
+}
+
+.form-question input[type="text"]:focus,
+.form-question input[type="number"]:focus,
+.form-question textarea:focus,
+.form-question select:focus,
+.form-question input[type="file"]:focus {
+    outline: none;
+    border-color: #00796b; /* Match editor */
+    box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2); /* Match editor */
+}
+
+ .form-question textarea {
+     min-height: 100px; /* Adjusted min height */
+     resize: vertical;
+ }
+
+.form-question .options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Match editor */
+    margin-top: 0.5rem; /* Match editor */
+}
+
+.form-question .options-container label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem; /* Adjusted padding */
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+.form-question .options-container label:hover {
+    background-color: #eee; /* Lighter hover effect */
+}
+
+.form-question input[type="radio"],
+.form-question input[type="checkbox"] {
+    margin-right: 0.5rem; /* Match editor */
+    margin-top: 0;
+    width: auto;
+    cursor: pointer;
+     /* accent-color: #00796b; Consider adding accent color */
+}
+
+ .form-question .rating-options {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 0.5rem 1rem; /* Match editor */
+     margin-top: 0.5rem; /* Match editor */
+     align-items: center;
+ }
+ .form-question .rating-options label {
+     margin-bottom: 0;
+     padding: 0.25rem 0.5rem;
+ }
+ .form-question .rating-options span { /* If you add a span for rating number itself */
+     margin-right: 0.5rem;
+     font-weight: 500;
+     color: #555;
+ }
+
+
+/* --- Submit Button --- */
+#submitFormButton {
+    display: block;
+    width: 100%;
+    background-color: #2ecc71; /* Match editor primary button */
+    color: white;
+    border: none;
+    padding: 0.9rem 1.5rem; /* Match editor primary button */
+    border-radius: 8px; /* Match editor primary button */
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease; /* Match editor */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Match editor */
+    margin-top: 2rem; /* Adjusted margin */
+}
+
+#submitFormButton:hover:not(:disabled) {
+    background-color: #27ae60; /* Match editor primary button hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Match editor */
+    transform: translateY(-2px); /* Match editor */
+}
+
+#submitFormButton:disabled {
+    background-color: #cccccc; /* Match editor disabled button */
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+
+/* --- Utility Styles --- */
+/* Status messages are already styled in editor.css, reusing those styles */
+.loading-message, .error-message, .success-message {
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
+    margin: 1rem auto; /* Center if used alone */
+}
+
+.loading-message {
+    color: #888;
+    background-color: #f3f3f3;
+    border: 1px solid #ddd;
+}
+.error-message {
+    color: #e74c3c;
+    background-color: #fdd;
+    border: 1px solid #e74c3c;
+}
+ .success-message {
+    color: #2ecc71;
+    background-color: #e6ffed;
+    border: 1px solid #2ecc71;
+}
+
+ .file-upload-status {
+     font-size: 0.9em;
+     color: #555;
+     margin-top: 0.5em;
+     display: block;
+ }
+ .file-upload-status.uploading {
+     color: #e67e22; /* Orange */
+     font-style: italic;
+ }
+ .file-upload-status.uploaded {
+     color: #2ecc71; /* Green */
+ }
+ .file-upload-status.error {
+     color: #e74c3c; /* Red */
+ }
+
+
+/* --- Footer Styles --- */
+footer {
+    background-color: #333; /* Match editor footer */
+    color: white;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 0.9rem;
+    margin-top: auto; /* Push footer to the bottom */
+    width: 100%; /* Footer spans full width */
+    flex-shrink: 0; /* Prevent footer from shrinking */
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) { /* Adjust breakpoint for the new max-width */
+    .container { max-width: 768px; /* Adjust max-width for medium screens */ }
+    header { padding: 1rem 1.5rem; font-size: 1.5rem; margin-bottom: 1.5rem;}
+    .container { padding: 1.5rem; }
+    .page-title { font-size: 1.6rem; margin-bottom: 1rem;}
+    .form-question { padding: 1rem 1.2rem; margin-bottom: 1.5rem;} /* Adjusted padding */
+     .form-question label { font-size: 0.95rem;}
+     .form-question input[type="text"],
+     .form-question input[type="number"],
+     .form-question textarea,
+     .form-question select,
+     .form-question input[type="file"] {
+         padding: 0.75rem 1rem;
+         font-size: 0.9rem;
+          margin-bottom: 0.3rem; /* Adjusted margin */
+     }
+     #submitFormButton {
+         padding: 0.8rem 1.2rem;
+         font-size: 1rem;
+         margin-top: 1.5rem;
+     }
+     .form-question .options-container { gap: 0.4rem; }
+      .form-question .options-container label { padding: 0.3rem 0.5rem;}
+      .form-question .rating-options { gap: 0.4rem 0.8rem; }
+}
+
+@media (max-width: 768px) { /* Original breakpoint */
+     .container { max-width: 600px; /* Adjust max-width for smaller screens */ }
+    header { padding: 1rem 1.5rem; font-size: 1.5rem; margin-bottom: 1.5rem;} /* Keep consistent */
+    .container { padding: 1.5rem; } /* Keep consistent */
+    .page-title { font-size: 1.6rem; margin-bottom: 1rem;} /* Keep consistent */
+    .form-question { padding: 1rem 1.2rem; margin-bottom: 1.5rem;} /* Adjusted padding */
+     .form-question label { font-size: 0.95rem;} /* Keep consistent */
+     .form-question input[type="text"],
+     .form-question input[type="number"],
+     .form-question textarea,
+     .form-question select,
+     .form-question input[type="file"] {
+         padding: 0.75rem 1rem;
+         font-size: 0.9rem;
+          margin-bottom: 0.3rem; /* Adjusted margin */
+     }
+     #submitFormButton {
+         padding: 0.8rem 1.2rem;
+         font-size: 1rem;
+         margin-top: 1.5rem;
+     }
+     .form-question .options-container { gap: 0.4rem; }
+      .form-question .options-container label { padding: 0.3rem 0.5rem;}
+      .form-question .rating-options { gap: 0.4rem 0.8rem; }
+}
+
+
+@media (max-width: 480px) {
+    header { font-size: 1.3rem; padding: 0.75rem;}
+    .container { padding: 1rem; max-width: none; /* Allow full width with padding on very small screens */ }
+    .page-title { font-size: 1.4rem; }
+    .form-question { padding: 0.8rem 1rem; margin-bottom: 1rem;} /* Adjusted padding */
+    .form-question label { font-size: 0.9rem;}
+     .form-question input[type="text"],
+     .form-question input[type="number"],
+     .form-question textarea,
+     .form-question select,
+     .form-question input[type="file"] {
+         font-size: 0.85rem;
+         padding: 0.6rem 0.8rem;
+         margin-bottom: 0.2rem; /* Adjusted margin */
+     }
+     #submitFormButton { font-size: 0.95rem; padding: 0.75rem 1rem;}
+     footer { padding: 1rem; font-size: 0.8rem;}
+}
