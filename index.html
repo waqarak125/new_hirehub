@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Form Builder - Create Forms Easily</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="editor.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyD0j1reBX48XiPuxkQvKhfgelC-sFH8wKI", // Replace with your actual Firebase config
+            authDomain: "formsmart-7a3e7.firebaseapp.com",
+            databaseURL: "https://formsmart-7a3e7-default-rtdb.firebaseio.com",
+            projectId: "formsmart-7a3e7",
+            storageBucket: "formsmart-7a3e7.firebasestorage.app",
+            messagingSenderId: "51184438401",
+            appId: "1:51184438401:web:8175270b3571b7d7925180",
+            measurementId: "G-28KJT44LN2"
+        };
+
+        if (!firebase.apps.length) {
+            try {
+                firebase.initializeApp(firebaseConfig);
+                console.log("Firebase App initialized successfully on index/editor page.");
+            } catch (error) {
+                console.error("Error initializing Firebase App on index/editor page:", error);
+            }
+        } else {
+            firebase.app();
+            console.log("Firebase App already initialized on index/editor page.");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        Smart Form Builder
+        <div class="auth-actions">
+            <a href="login.html" id="loginSignupButton" class="btn btn-header-action">Login / Sign Up</a>
+            <span id="userEmailDisplay" class="user-email" style="display: none;"></span>
+            <a href="dashboard.html" id="dashboardButton" class="btn btn-header-action" style="display: none;">Dashboard</a>
+            <button id="logoutButton" class="btn btn-logout" style="display: none;">Logout</button>
+        </div>
+    </header>
+
+    <section class="hero-section" id="heroSection">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hiring Made Easy with AI</h1>
+                <p>Create smart, tailored forms for candidate screening, lead generation, surveys, and more.</p>
+                <button class="btn btn-primary" id="getStartedButton">Start Building Your Form</button>
+            </div>
+            <div class="hero-image">
+                <img src="https://cdn.glitch.global/8ade0468-706c-423b-93d2-382a33a4ddc5/image.png?v=1746654609372" alt="Illustration of a person building a form online">
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works-section">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <i class="fas fa-pencil-alt"></i>
+                    <h3>1. Name Your Form</h3>
+                    <p>Give your form a clear title, like "Software Engineer Application" or "Customer Feedback Survey".</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-robot"></i>
+                    <h3>2. Use AI Suggestions (Optional)</h3>
+                    <p>Provide instructions or set hiring priorities to get AI-powered question suggestions tailored to your needs.</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-list-alt"></i>
+                    <h3>3. Build Your Form</h3>
+                    <p>Add, edit, and rearrange questions manually using various input types (text, dropdowns, ratings, etc.).</p>
+                </div>
+                 <div class="step">
+                    <i class="fas fa-share-alt"></i>
+                    <h3>4. Publish & Share</h3>
+                    <p>Save your form and get a unique link to share with respondents or embed on your website.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container editor-container" id="editorContainer">
+        <div class="main-content">
+            <label for="formNameInput">Form Name</label>
+            <input type="text" id="formNameInput" placeholder="Enter your form title" />
+
+            <div style="margin-top: 1.5rem;">
+                <div class="ai-instructions-header">
+                    <label for="instructions">AI Instructions (Optional)</label>
+                    <button id="openPrioritiesModalButton" class="btn btn-secondary btn-ai-priority" type="button">Set AI Priorities</button>
+                </div>
+                <textarea id="instructions" placeholder="Describe the purpose of your form or the specific questions you need..."></textarea>
+                <div class="ai-buttons-container">
+                    <button id="sendInstructionsButton" class="btn btn-ai" type="button">Get AI Suggestions</button>
+                    </div>
+            </div>
+
+            <div id="aiQuestionBlock" class="ai-question-block" style="display: none;">
+                <strong>AI Suggestions:</strong>
+                <div id="aiQuestionContent"></div>
+            </div>
+
+            <div class="form-builder" id="questionList">
+                <strong id="questionsTitle">Your Questions:</strong>
+                <div id="questionsContainer"></div>
+                <button class="btn" id="addManualQuestionButton" type="button">+ Add Manual Question</button>
+            </div>
+
+            <div class="form-preview">
+                <strong>Form Preview:</strong>
+                <div id="formPreview"></div>
+            </div>
+
+            <div style="margin-top: 2rem; text-align: right;">
+                <button class="btn" id="savePublishButton" type="button">Save &amp; Publish Form</button>
+            </div>
+            <div id="publishStatus" class="success-message" style="display: none;"></div>
+        </div>
+    </div>
+
+    <div id="aiPrioritiesModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closePrioritiesModalButton">&times;</span>
+            <h2>Set AI Hiring Priorities</h2>
+            <p>Adjust the importance of different candidate aspects (total must equal 100%).</p>
+
+            <div class="priority-toggle-container">
+                <label for="priorityToggleSwitch">Enable Priority-Based AI Suggestions:</label>
+                <input type="checkbox" id="priorityToggleSwitch" name="priorityToggleSwitch">
+                <label class="toggle-switch-label" for="priorityToggleSwitch">
+                    <span class="toggle-switch-inner"></span>
+                    <span class="toggle-switch-switch"></span>
+                </label>
+            </div>
+
+
+            <div id="modalPriorityInputs" class="priority-inputs-container">
+                </div>
+
+            <div class="total-weight">
+                Total Weight: <span id="modalCurrentTotal">0</span>%
+            </div>
+            <div id="modalWeightError" class="error-message" style="display: none;">
+                Total weight must equal 100%.
+            </div>
+
+            <div style="text-align: right; margin-top: 1.5rem;">
+                 <button id="savePrioritiesButton" class="btn">Save Priorities</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Smart Form Builder. All rights reserved.
+    </footer>
+
+    <script src="auth.js" defer></script>
+    <script src="editor.js" defer></script>
+</body>
+</html>

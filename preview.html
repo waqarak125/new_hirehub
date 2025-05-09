@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Form Builder - Preview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="preview.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyD0j1reBX48XiPuxkQvKhfgelC-sFH8wKI", // Replace with your actual Firebase config
+            authDomain: "formsmart-7a3e7.firebaseapp.com",
+            databaseURL: "https://formsmart-7a3e7-default-rtdb.firebaseio.com",
+            projectId: "formsmart-7a3e7",
+            storageBucket: "formsmart-7a3e7.firebasestorage.app",
+            messagingSenderId: "51184438401",
+            appId: "1:51184438401:web:8175270b3571b7d7925180",
+            measurementId: "G-28KJT44LN2"
+        };
+        // Ensure firebase is initialized before preview.js runs
+         if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+         }
+    </script>
+</head>
+<body>
+    <header>
+        Smart Form Builder - Preview
+    </header>
+
+    <div class="container page-container">
+        <h1 id="formHeader" class="page-title">Loading Form...</h1>
+        <div id="formContent">
+            <p class="loading-message">Loading form data...</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">© 2025 SmartForm. All rights reserved.</div>
+    </footer>
+
+    <script src="preview.js" defer></script>
+</body>
+</html>

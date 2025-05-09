@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Form Builder - Candidate Comparison</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="compare.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+        // --- Firebase Configuration ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyD0j1reBX48XiPuxkQvKhfgelC-sFH8wKI",
+            authDomain: "formsmart-7a3e7.firebaseapp.com",
+            databaseURL: "https://formsmart-7a3e7-default-rtdb.firebaseio.com",
+            projectId: "formsmart-7a3e7",
+            storageBucket: "formsmart-7a3e7.firebasestorage.app",
+            messagingSenderId: "51184438401",
+            appId: "1:51184438401:web:8175270b3571b7d7925180",
+            measurementId: "G-28KJT44LN2",
+        };
+         // Check if firebase is initialized before compare.js runs (optional but good practice)
+         if (!firebase.apps.length) {
+            try {
+                 firebase.initializeApp(firebaseConfig);
+                 console.log("Firebase App initialized successfully from compare.html.");
+            } catch (error) {
+                 console.error("Error initializing Firebase App from compare.html:", error);
+                 // You might want to display an error message on the page here
+            }
+         } else {
+             firebase.app(); // if already initialized, use that app
+             console.log("Firebase App already initialized (checked from compare.js).");
+         }
+    </script>
+</head>
+<body>
+    <header>
+        Smart Form Builder - Candidate Comparison
+         <div class="header-actions"> <a href="index.html" class="btn btn-header-action"><i class="fas fa-edit mr-2"></i> Create New Form</a> </div>
+    </header>
+
+    <main class="container page-container">
+        <h1 id="formNameTitleCompare" class="page-title">Loading Comparison...</h1>
+
+         <div id="controlsBar" class="controls-bar">
+               </div>
+
+
+        <div id="customInstructionsSection">
+            <label for="customInstructions"><i class="fas fa-robot mr-2"></i> Optional: Add specific instructions for AI analysis (e.g., "Focus on leadership potential", "Prioritize candidates with Java experience over 5 years")</label>
+            <textarea id="customInstructions" placeholder="Enter custom instructions here..."></textarea>
+            <div class="button-group">
+                 <button id="triggerAIAnalysisButton" class="btn"><i class="fas fa-brain mr-2"></i> Analyze Candidates with AI</button>
+                 <button id="clearCustomInstructionsButton" class="btn btn-secondary"><i class="fas fa-eraser mr-2"></i> Clear Instructions</button>
+            </div>
+        </div>
+
+        <div id="aiAnalysisStatus" class="status-message" style="display:none;"></div>
+
+        <div id="overallRankingSection" style="display:none;">
+            <h3><i class="fas fa-trophy mr-2"></i> Overall Candidate Ranking</h3>
+            <div id="rankingContainer">
+                </div>
+        </div>
+
+         <div id="candidateComparisonSection" style="display:none;">
+              <h3><i class="fas fa-users mr-2"></i> Detailed Candidate Analysis</h3>
+              <div id="candidateComparisonCards">
+                  </div>
+               <div class="download-dropdown-container ai-download-dropdown">
+                   <button class="btn btn-secondary download-dropdown-button" disabled><i class="fas fa-download mr-2"></i> Download AI Analysis</button>
+                   <div class="dropdown-menu">
+                       <a href="#" class="dropdown-item" data-format="csv" data-type="ai">CSV</a>
+                       <a href="#" class="dropdown-item" data-format="json" data-type="ai">JSON</a>
+                       </div>
+               </div>
+         </div>
+
+        <div id="rawComparisonTableContainer" style="display:none;">
+             <h3><i class="fas fa-table mr-2"></i> Raw Question Answer Comparison</h3>
+             <p class="section-description">This table shows the direct answers provided by candidates for each question.</p>
+            <div class="comparison-table-wrapper">
+                <table id="comparisonTable">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+             <div class="download-dropdown-container raw-download-dropdown">
+                 <button class="btn btn-secondary download-dropdown-button" disabled><i class="fas fa-download mr-2"></i> Download Raw Data</button>
+                 <div class="dropdown-menu">
+                     <a href="#" class="dropdown-item" data-format="csv" data-type="raw">CSV</a>
+                     <a href="#" class="dropdown-item" data-format="json" data-type="raw">JSON</a>
+                      </div>
+             </div>
+        </div>
+
+         <div id="loadingMessage" class="status-message loading"><i class="fas fa-spinner fa-spin mr-2"></i> Fetching data... Please wait.</div>
+         <div id="errorMessage" class="status-message error" style="display:none;"></div>
+         <div id="noSubmissionsMessage" class="status-message info" style="display:none;">
+            <i class="fas fa-inbox mr-2"></i> No submissions found for this form to analyze.
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">© 2025 SmartForm. All rights reserved.</div>
+    </footer>
+
+    <script src="compare.js" defer></script>
+</body>
+</html>

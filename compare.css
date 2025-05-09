@@ -1,0 +1,702 @@
+/* --- Base Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: #f4f6f8; /* Match editor background */
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- Header Styles --- */
+header {
+    background-color: #00796b; /* Match editor header */
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+     display: flex; /* Use flexbox for header content */
+     justify-content: space-between; /* Space out title and actions */
+     align-items: center;
+    width: 100%;
+    margin-bottom: 1.5rem; /* Space below header */
+     flex-shrink: 0; /* Prevent header from shrinking */
+     box-sizing: border-box;
+}
+/* Style for the header actions div */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between header buttons/elements */
+}
+
+/* Header button style */
+.btn-header-action {
+    background-color: #004d40; /* Even Darker Teal */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: inline-flex; /* For icon */
+    align-items: center;
+    gap: 0.4rem;
+}
+.btn-header-action:hover {
+    background-color: #00332c; /* Darkest Teal */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+
+/* --- Page Container (for centering main content) --- */
+.page-container {
+    display: flex;
+    flex-direction: column; /* Stack title, controls, and content */
+    align-items: center; /* Horizontally center children */
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    flex-grow: 1; /* Allow container to take available space */
+}
+
+/* --- Container Styles --- */
+.container {
+    width: 100%; /* Take full width of parent */
+    max-width: 1200px; /* Wider for comparison */
+    /* margin: 2rem auto; Removed, page-container handles centering */
+    padding: 2rem 2.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Match editor shadow */
+    border-radius: 12px;
+    box-sizing: border-box;
+     flex-shrink: 0; /* Prevent container from shrinking */
+}
+
+.page-title { /* Style for h1 like Form Name Title */
+    font-size: 1.8rem; /* Adjusted size */
+    font-weight: 700;
+    color: #333; /* Match editor */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1.5rem; /* Space below title */
+}
+
+/* --- Controls Bar (Filter - Placeholder) --- */
+.controls-bar {
+    width: 100%;
+    max-width: 1200px; /* Match container max-width */
+    display: flex;
+    justify-content: flex-start; /* Align controls to the start */
+    align-items: center;
+    gap: 1.5rem; /* Space between controls */
+    margin-bottom: 1.5rem;
+    padding: 0 1rem; /* Match page-container padding */
+    box-sizing: border-box;
+    flex-wrap: wrap; /* Allow wrapping */
+}
+
+
+/* --- Download Dropdown Styles --- */
+.download-dropdown-container {
+    position: relative; /* Needed for dropdown positioning */
+    display: inline-block; /* Allows it to sit inline if needed, or takes width of content */
+    margin-top: 1rem; /* Space above the dropdown button group */
+    text-align: center; /* Center the button within its container */
+    width: 100%; /* Allow container to take full width for centering */
+}
+.download-dropdown-container .download-dropdown-button {
+    /* Use btn-secondary styles */
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position below the button */
+    left: 50%; /* Start at the horizontal center */
+    transform: translateX(-50%); /* Shift left by half its width to truly center */
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    min-width: 150px; /* Minimum width */
+    z-index: 10; /* Ensure it's above other content */
+    display: none; /* Hidden by default */
+    flex-direction: column; /* Stack items vertically */
+    padding: 0.5rem 0;
+    border: 1px solid #ddd;
+}
+.dropdown-menu.show {
+    display: flex; /* Show when class 'show' is added by JS */
+}
+
+.dropdown-item {
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+    display: block; /* Make the whole item clickable */
+}
+.dropdown-item:hover {
+    background-color: #f4f4f4;
+    color: #00796b; /* Highlight color */
+}
+
+
+/* --- Generic Button Styles (Match Editor) --- */
+.btn {
+    background-color: #2ecc71; /* Default green */
+    color: white;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: inline-flex; /* Use flex for icon and text */
+    align-items: center;
+    gap: 0.5rem; /* Space between icon and text */
+    text-decoration: none; /* For anchor tags styled as buttons */
+}
+.btn:hover:not(:disabled) {
+    background-color: #27ae60;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+.btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Secondary button style for downloads, clear instructions */
+.btn-secondary {
+    background-color: #95a5a6; /* Grey */
+    color: white;
+    padding: 0.7rem 1.2rem; /* Slightly smaller padding */
+    font-size: 0.95rem; /* Slightly smaller font */
+}
+.btn-secondary:hover:not(:disabled) {
+    background-color: #7f8c8d; /* Darker Grey */
+}
+.btn-secondary:disabled {
+    background-color: #bdc3c7; /* Lighter grey when disabled */
+    color: #ecf0f1;
+}
+
+
+/* --- Custom Instructions Section --- */
+#customInstructionsSection {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9; /* Match editor */
+    border: 1px solid #e0e0e0; /* Match editor */
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Match editor */
+}
+#customInstructionsSection label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #333; /* Match editor */
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+#customInstructionsSection textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.85rem; /* Match editor */
+    border: 1px solid #bdc3c7; /* Match editor */
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    resize: vertical;
+    font-family: inherit;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Match editor */
+}
+#customInstructionsSection textarea:focus {
+     outline: none;
+     border-color: #00796b; /* Match editor */
+     box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2); /* Match editor */
+}
+.button-group { /* For Analyze and Clear buttons */
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.button-group .btn {
+    flex-grow: 1;
+    min-width: 180px; /* Ensure buttons don't get too small before wrapping */
+    justify-content: center; /* Center content inside buttons */
+}
+.button-group .btn-secondary { /* Clear button */
+     flex-grow: 0; /* Prevent stretching */
+     min-width: auto;
+}
+
+
+/* --- Main Content Sections --- */
+#overallRankingSection, #candidateComparisonSection, #rawComparisonTableContainer {
+     margin-top: 2.5rem; /* Space above each main section */
+     padding-top: 1.5rem;
+     border-top: 1px solid #e0e0e0; /* Separator like in editor */
+}
+#overallRankingSection h3, #candidateComparisonSection h3, #rawComparisonTableContainer h3 {
+     text-align: center;
+     margin-top: 0;
+     margin-bottom: 1.5rem; /* Space below section heading */
+     color: #333; /* Match editor */
+     font-size: 1.5rem; /* Adjusted size */
+     font-weight: 600;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 0.75rem; /* Space between icon and text */
+}
+.section-description { /* For raw data table description */
+    text-align: center;
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: -1rem; /* Pull up closer to heading */
+    margin-bottom: 1.5rem;
+}
+
+/* --- Overall Ranking Section --- */
+#rankingContainer {
+     padding: 1.5rem;
+     background-color: #f9f9f9; /* Light background */
+     border: 1px solid #eee; /* Light border */
+     border-radius: 8px;
+     box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* subtle inset */
+}
+#rankingContainer .ranked-candidate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e0e0e0; /* Match editor */
+    font-size: 1rem;
+}
+#rankingContainer .ranked-candidate:last-child { border-bottom: none; }
+#rankingContainer .rank-position {
+    font-weight: bold;
+    color: #00796b; /* Dark Teal */
+    margin-right: 15px; /* Increased space */
+    font-size: 1.1em; /* Slightly larger */
+}
+#rankingContainer .rank-name {
+     flex-grow: 1;
+     color: #333;
+     font-weight: 500;
+}
+#rankingContainer .rank-score {
+     font-weight: 600;
+     color: #2ecc71; /* Green */
+     margin-left: 10px;
+     flex-shrink: 0;
+}
+
+
+/* --- Candidate Comparison Cards --- */
+#candidateComparisonCards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 1.5rem;
+    margin-top: 0; /* Handled by parent section padding-top */
+    margin-bottom: 1.5rem; /* Space below cards before download buttons */
+}
+.candidate-card {
+    background-color: #f9f9f9; /* Match editor */
+    border: 1px solid #e0e0e0; /* Match editor */
+    border-radius: 10px;
+    padding: 1.5rem; /* Match editor section padding */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Match editor */
+    display: flex;
+    flex-direction: column;
+}
+.candidate-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #00796b; /* Dark Teal */
+    font-size: 1.3rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    font-weight: 600;
+}
+.candidate-card .submission-time {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 1.25rem;
+}
+.candidate-card .ai-summary,
+.candidate-card .ai-strengths,
+.candidate-card .ai-weaknesses,
+.candidate-card .ai-category-scores,
+.candidate-card .ai-fit-score {
+    margin-bottom: 1.25rem; /* Increased spacing */
+}
+.candidate-card h5 {
+    font-size: 1rem; /* Standard size */
+    color: #333;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.candidate-card p, .candidate-card ul {
+    font-size: 0.95rem; /* Slightly larger */
+    color: #555;
+    margin-top: 0;
+}
+.candidate-card ul { padding-left: 1.2rem; margin-bottom: 0; list-style-type: disc;}
+.candidate-card li { margin-bottom: 0.3rem; }
+
+.candidate-card .category-score-item { display: flex; justify-content: space-between; align-items: center; }
+.candidate-card .category-score-item span:first-child { flex-grow: 1; margin-right: 10px; color: #444;}
+.candidate-card .category-score-item .score { font-weight: 600; color: #2ecc71; /* Green */ flex-shrink: 0;}
+
+
+.candidate-card .ai-fit-score {
+     margin-top: 1.25rem; /* Space above fit score */
+     padding-top: 1.25rem;
+     border-top: 1px dashed #eee;
+}
+.candidate-card .ai-fit-score h5 { margin-bottom: 0.5rem;}
+.candidate-card .fit-score-value {
+    font-size: 1.6rem; /* Larger score */
+    font-weight: bold;
+    color: #2ecc71; /* Green for good fit (default) */
+}
+.candidate-card .fit-score-value.high { color: #2ecc71; } /* Green */
+.candidate-card .fit-score-value.medium { color: #e67e22; } /* Orange */
+.candidate-card .fit-score-value.low { color: #e74c3c; } /* Red */
+
+.candidate-card .ai-fit-score em { /* Reasoning text */
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-style: normal; /* Remove italic */
+}
+
+
+.candidate-card .flagged {
+    color: #e74c3c; /* Red */
+    font-weight: 700;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.candidate-card .flagged-reason {
+    font-size: 0.85rem;
+    color: #c0392b; /* Darker Red */
+    background-color: #fadde0; /* Light Red background */
+    padding: 0.6rem;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+}
+
+
+/* --- Raw Comparison Table Styles --- */
+#rawComparisonTableContainer {
+     margin-bottom: 2rem; /* Space below the table section */
+}
+
+.comparison-table-wrapper {
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    background-color: #f9f9f9; /* Match section background */
+    border: 1px solid #e0e0e0; /* Match section border */
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* subtle inset */
+    padding: 1rem; /* Add some padding inside the wrapper */
+}
+#comparisonTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem; /* Adjusted size for readability */
+    /* box-shadow: 0 1px 4px rgba(0,0,0,0.04); Removed outer shadow */
+}
+#comparisonTable th, #comparisonTable td {
+    border: 1px solid #eee; /* Lighter border */
+    padding: 0.8rem 0.6rem; /* Adjusted padding */
+    text-align: left;
+    vertical-align: top;
+}
+#comparisonTable thead th {
+    background-color: #e0f2f1; /* Light teal background */
+    color: #004d40; /* Darkest Teal */
+    font-weight: 600;
+    position: sticky; top: 0; z-index: 5;
+}
+#comparisonTable tbody tr:nth-child(even) { background-color: #f3fcfb; /* Very light teal for even rows */ }
+#comparisonTable .question-column {
+    font-weight: 500;
+    background-color: #e0f2f1; /* Match header background */
+    min-width: 200px; /* Wider question column */
+    position: sticky; left: 0; z-index: 2; /* Sticky question column */
+    box-shadow: 2px 0 3px rgba(0,0,0,0.05); /* Shadow for sticky column */
+}
+#comparisonTable .no-answer { color: #888; font-style: italic; }
+#comparisonTable .answer-file a {
+    color: #00796b; /* Dark Teal */
+    text-decoration: underline;
+}
+#comparisonTable .answer-file a:hover {
+    color: #004d40; /* Even Darker Teal */
+}
+/* Style for list items within table cells */
+#comparisonTable ul {
+    padding-left: 1.2em; /* Indent list */
+    margin: 0;
+    list-style-type: disc;
+}
+#comparisonTable li {
+    margin-bottom: 0.3em; /* Space between list items */
+}
+#comparisonTable li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* --- Status Message Styles (Match Editor/Result) --- */
+.status-message {
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 800px; /* Max width for message box */
+    box-sizing: border-box;
+    margin: 1rem auto; /* Center if used alone */
+     display: flex; /* For icon */
+     align-items: center;
+     justify-content: center;
+     gap: 0.5rem;
+}
+.status-message.loading {
+    color: #888;
+    background-color: #f3f3f3;
+    border: 1px solid #ddd;
+}
+.status-message.error {
+    color: #e74c3c;
+    background-color: #fdd;
+    border: 1px solid #e74c3c;
+}
+.status-message.success {
+    color: #2ecc71;
+    background-color: #e6ffed;
+    border: 1px solid #2ecc71;
+}
+.status-message.info { /* For no submissions message */
+     color: #555;
+     background-color: #eef;
+     border: 1px solid #cce;
+}
+
+
+/* --- Footer Styles --- */
+footer {
+    background-color: #333; /* Match editor footer */
+    color: white;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 0.9rem;
+    margin-top: auto; /* Push footer to the bottom */
+    width: 100%; /* Footer spans full width */
+    flex-shrink: 0; /* Prevent footer from shrinking */
+    box-sizing: border-box;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) { /* Adjust breakpoint for wider container */
+     .container { max-width: 900px; }
+     header { flex-direction: column; align-items: center; padding: 1rem 1.5rem; font-size: 1.5rem; margin-bottom: 1rem;}
+     .header-actions { margin-top: 0.75rem; flex-wrap: wrap; justify-content: center; gap: 0.75rem;}
+     .btn-header-action { padding: 0.4rem 0.8rem; font-size: 0.8rem;}
+
+    .page-title { font-size: 1.6rem; margin-bottom: 1rem;}
+
+    .controls-bar {
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 1rem;
+         margin-bottom: 1rem;
+         padding: 0 0.75rem;
+    }
+     /* Styles for filter controls if added */
+    .filter-controls {
+         flex-direction: column; /* Stack filter controls */
+         gap: 0.5rem;
+         width: 100%;
+    }
+    .filter-controls > * { /* Target inputs and selects */
+         width: 100%;
+         box-sizing: border-box;
+    }
+
+     .download-dropdown-container { margin-top: 1rem;}
+     .download-dropdown-container .download-dropdown-button { width: 100%; box-sizing: border-box;}
+     .dropdown-menu { min-width: auto; width: calc(100% - 1.5rem);} /* Adjust dropdown width */
+
+
+    #customInstructionsSection { padding: 1.25rem; margin-bottom: 1.5rem;}
+    #customInstructionsSection label { font-size: 0.95rem;}
+    #customInstructionsSection textarea { padding: 0.75rem; font-size: 0.9rem; min-height: 60px;}
+    .button-group { flex-direction: column;}
+    .button-group .btn, .button-group .btn-secondary { width: 100%; box-sizing: border-box; min-width: auto;}
+
+
+    #overallRankingSection, #candidateComparisonSection, #rawComparisonTableContainer { margin-top: 2rem; padding-top: 1.25rem;}
+    #overallRankingSection h3, #candidateComparisonSection h3, #rawComparisonTableContainer h3 { font-size: 1.3rem; margin-bottom: 1rem;}
+    .section-description { font-size: 0.9rem; margin-bottom: 1rem;}
+
+    #rankingContainer { padding: 1rem;}
+    #rankingContainer .ranked-candidate { padding: 0.6rem 0.8rem; font-size: 0.95rem; }
+     #rankingContainer .rank-position { margin-right: 10px; font-size: 1em;}
+
+    #candidateComparisonCards { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1rem;} /* Adjusted margin-bottom */
+    .candidate-card { padding: 1.25rem;}
+     .candidate-card h4 { font-size: 1.2rem; margin-bottom: 0.6rem;}
+     .candidate-card .submission-time { font-size: 0.8rem; margin-bottom: 1rem;}
+     .candidate-card .ai-summary, .candidate-card .ai-strengths, .candidate-card .ai-weaknesses, .candidate-card .ai-category-scores, .candidate-card .ai-fit-score { margin-bottom: 1rem;}
+     .candidate-card h5 { font-size: 0.95rem;}
+     .candidate-card p, .candidate-card ul { font-size: 0.9rem;}
+     .candidate-card ul { padding-left: 1.2em; margin-bottom: 0;}
+     .candidate-card li { margin-bottom: 0.3rem; }
+     .candidate-card .fit-score-value { font-size: 1.4rem;}
+
+     .comparison-table-wrapper { padding: 0.75rem;}
+     #comparisonTable { font-size: 0.8rem;}
+     #comparisonTable th, #comparisonTable td { padding: 0.6rem 0.5rem;}
+      #comparisonTable thead th { font-size: 0.85rem;}
+      #comparisonTable .question-column { min-width: 150px; font-size: 0.85rem;}
+}
+
+
+@media (max-width: 768px) { /* Original breakpoint */
+     .container { max-width: 600px; }
+     header { padding: 0.75rem 1rem; font-size: 1.3rem;}
+     .btn-header-action { font-size: 0.7rem; padding: 0.3rem 0.6rem; gap: 0.3rem;}
+     .header-actions { gap: 0.5rem;}
+
+     .page-title { font-size: 1.4rem;}
+
+     .controls-bar { padding: 0 0.5rem;}
+
+     .download-dropdown-container { margin-top: 0.8rem;}
+      .download-dropdown-container .download-dropdown-button { padding: 0.7rem 1rem; font-size: 0.95rem; gap: 0.4rem;}
+      .dropdown-menu { width: calc(100% - 1rem);} /* Adjust dropdown width */
+
+
+     #customInstructionsSection { padding: 1rem; margin-bottom: 1rem;}
+     #customInstructionsSection label { font-size: 0.9rem;}
+     #customInstructionsSection textarea { font-size: 0.85rem; min-height: 50px;}
+     .button-group { gap: 0.75rem;}
+
+
+     #overallRankingSection, #candidateComparisonSection, #rawComparisonTableContainer { margin-top: 1.5rem; padding-top: 1rem;}
+     #overallRankingSection h3, #candidateComparisonSection h3, #rawComparisonTableContainer h3 { font-size: 1.2rem; margin-bottom: 0.75rem;}
+     .section-description { font-size: 0.85rem; margin-bottom: 0.75rem;}
+
+     #rankingContainer { padding: 0.8rem;}
+     #rankingContainer .ranked-candidate { padding: 0.5rem 0.6rem; font-size: 0.9rem; }
+     #rankingContainer .rank-position { margin-right: 8px; font-size: 1em;}
+     #rankingContainer .rank-name { font-size: 0.9rem;}
+     #rankingContainer .rank-score { font-size: 0.9rem;}
+
+
+     #candidateComparisonCards { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 0.8rem;} /* Stack cards and adjust margin */
+     .candidate-card { padding: 1rem;}
+     .candidate-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem;}
+     .candidate-card .submission-time { font-size: 0.75rem; margin-bottom: 0.8rem;}
+     .candidate-card .ai-summary, .candidate-card .ai-strengths, .candidate-card .ai-weaknesses, .candidate-card .ai-category-scores, .candidate-card .ai-fit-score { margin-bottom: 0.8rem;}
+     .candidate-card h5 { font-size: 0.9rem;}
+     .candidate-card p, .candidate-card ul { font-size: 0.85rem;}
+     .candidate-card ul { padding-left: 1em;}
+     .candidate-card li { margin-bottom: 0.2em;}
+     .candidate-card .fit-score-value { font-size: 1.3rem;}
+     .candidate-card .ai-fit-score em { font-size: 0.8rem;}
+     .candidate-card .flagged { font-size: 0.9rem; margin-top: 0.8rem;}
+     .candidate-card .flagged-reason { font-size: 0.8rem; padding: 0.4rem;}
+
+
+     .comparison-table-wrapper { padding: 0.5rem;}
+     #comparisonTable { font-size: 0.75rem;}
+     #comparisonTable th, #comparisonTable td { padding: 0.5rem 0.4rem;}
+     #comparisonTable thead th { font-size: 0.8rem;}
+     #comparisonTable .question-column { min-width: 120px; font-size: 0.8rem;}
+
+
+     .status-message { padding: 0.8rem 1rem; font-size: 0.9rem; gap: 0.4rem;}
+
+     footer { padding: 1rem; font-size: 0.8rem;}
+}
+
+@media (max-width: 480px) {
+     .container { padding: 1rem;}
+     header { font-size: 1.2rem; padding: 0.6rem 0.8rem;}
+     .btn-header-action { font-size: 0.65rem; padding: 0.25rem 0.5rem;}
+     .header-actions { gap: 0.4rem;}
+
+     .page-title { font-size: 1.3rem;}
+
+     .controls-bar { padding: 0 0.4rem; gap: 0.5rem;}
+
+     .download-dropdown-container { margin-top: 0.6rem;}
+      .download-dropdown-container .download-dropdown-button { padding: 0.6rem 0.8rem; font-size: 0.9rem; gap: 0.4rem;}
+       .dropdown-menu { width: calc(100% - 0.8rem);} /* Adjust dropdown width */
+
+
+      #customInstructionsSection { padding: 0.8rem; margin-bottom: 0.8rem;}
+      #customInstructionsSection label { font-size: 0.85rem; gap: 0.4rem;}
+      #customInstructionsSection textarea { font-size: 0.8rem; min-height: 40px;}
+      .button-group { gap: 0.5rem;}
+      .button-group .btn { padding: 0.7rem 1rem; font-size: 0.9rem; gap: 0.4rem;}
+
+
+      #overallRankingSection, #candidateComparisonSection, #rawComparisonTableContainer { margin-top: 1.2rem; padding-top: 0.8rem;}
+      #overallRankingSection h3, #candidateComparisonSection h3, #rawComparisonTableContainer h3 { font-size: 1.1rem; margin-bottom: 0.6rem; gap: 0.5rem;}
+      .section-description { font-size: 0.8rem; margin-bottom: 0.6rem;}
+
+      #rankingContainer { padding: 0.6rem;}
+      #rankingContainer .ranked-candidate { padding: 0.4rem 0.5rem; font-size: 0.85rem; }
+      #rankingContainer .rank-position { margin-right: 6px; font-size: 1em;}
+
+
+      .candidate-card { padding: 0.8rem; margin-bottom: 0.6rem;}
+      .candidate-card h4 { font-size: 1rem; margin-bottom: 0.4rem;}
+      .candidate-card .submission-time { font-size: 0.7rem; margin-bottom: 0.6rem;}
+      .candidate-card .ai-summary, .candidate-card .ai-strengths, .candidate-card .ai-weaknesses, .candidate-card .ai-category-scores, .candidate-card .ai-fit-score { margin-bottom: 0.6rem;}
+      .candidate-card h5 { font-size: 0.85rem; gap: 0.3rem;}
+      .candidate-card p, .candidate-card ul { font-size: 0.8rem;}
+      .candidate-card ul { padding-left: 0.8em;}
+
+      .comparison-table-wrapper { padding: 0.4rem;}
+      #comparisonTable { font-size: 0.7rem;}
+      #comparisonTable th, #comparisonTable td { padding: 0.4rem 0.3rem;}
+       #comparisonTable thead th { font-size: 0.8rem;}
+       #comparisonTable .question-column { min-width: 100px; font-size: 0.75rem;}
+
+
+      .status-message { padding: 0.6rem 0.8rem; font-size: 0.8rem; gap: 0.3rem;}
+
+      footer { padding: 0.8rem; font-size: 0.75rem;}
+}
