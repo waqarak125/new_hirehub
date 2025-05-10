@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // ----- USER IS SIGNED OUT -----
             // Removed index.html from protected pages to allow public access
-            const protectedPages = ['dashboard.html', 'editor.html', 'preview.html', 'result.html', 'compare.html']; // Add any other pages that *require* login
+            const protectedPages = ['dashboard.html', 'editor.html','result.html', 'compare.html']; // Add any other pages that *require* login
 
             if (protectedPages.includes(currentPage)) {
                 console.log(`auth.js: User not signed in, on protected page (${currentPage}). Redirecting to login.html`);
